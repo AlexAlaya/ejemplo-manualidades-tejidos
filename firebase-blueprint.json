@@ -1,0 +1,144 @@
+{
+  "entities": {
+    "Contact": {
+      "title": "Contact",
+      "description": "Persona registrada en la tienda Hebras & Amor para novedades y contacto",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identificador único del contacto"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nombre completo del contacto"
+        },
+        "email": {
+          "type": "string",
+          "description": "Correo electrónico de contacto"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Número de teléfono o WhatsApp"
+        },
+        "city": {
+          "type": "string",
+          "description": "Ciudad de residencia"
+        },
+        "interest": {
+          "type": "string",
+          "description": "Interés principal (Peluches, Ramos, Llaveros, Todos)"
+        },
+        "customerType": {
+          "type": "string",
+          "description": "Tipo de cliente (vip, regular, nuevo)"
+        },
+        "registeredAt": {
+          "type": "string",
+          "description": "Fecha de registro ISO"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Notas internas del taller sobre el contacto"
+        }
+      },
+      "required": ["name", "email", "phone"]
+    },
+    "Announcement": {
+      "title": "Announcement",
+      "description": "Anuncio o comunicado enviado a contactos seleccionados",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identificador del anuncio"
+        },
+        "title": {
+          "type": "string",
+          "description": "Título o asunto del anuncio"
+        },
+        "message": {
+          "type": "string",
+          "description": "Contenido del comunicado"
+        },
+        "targetUserIds": {
+          "type": "array",
+          "description": "Lista de IDs de contactos seleccionados como destinatarios"
+        },
+        "targetCategory": {
+          "type": "string",
+          "description": "Categoría o motivo del anuncio"
+        },
+        "couponCode": {
+          "type": "string",
+          "description": "Código de cupón opcional adjunto"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Fecha de creación y envío"
+        },
+        "author": {
+          "type": "string",
+          "description": "Autor o remitente"
+        }
+      },
+      "required": ["title", "message", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Pedido registrado por un cliente",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Número o identificador de orden"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Nombre del cliente"
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Teléfono de contacto"
+        },
+        "customerEmail": {
+          "type": "string",
+          "description": "Email de confirmación"
+        },
+        "total": {
+          "type": "number",
+          "description": "Monto total del pedido"
+        },
+        "status": {
+          "type": "string",
+          "description": "Estado de la orden"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Fecha de creación del pedido"
+        }
+      },
+      "required": ["customerName", "customerPhone", "total"]
+    }
+  },
+  "firestore": {
+    "/contacts/{contactId}": {
+      "schema": {
+        "$ref": "Contact"
+      },
+      "description": "Personas y clientes registrados para contacto y anuncios"
+    },
+    "/announcements/{announcementId}": {
+      "schema": {
+        "$ref": "Announcement"
+      },
+      "description": "Anuncios y comunicados enviados a destinatarios seleccionados"
+    },
+    "/orders/{orderId}": {
+      "schema": {
+        "$ref": "Order"
+      },
+      "description": "Historial de compras y pedidos registrados"
+    }
+  }
+}

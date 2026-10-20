@@ -1,0 +1,6 @@
+{
+  "name": "Hebras & Amor - Tienda de Tejidos Artesanales",
+  "description": "Tienda en línea de tejidos artesanales hechos a mano con amor: amigurumis tiernos, ramos de flores eternas, llaveros y regalos personalizados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
